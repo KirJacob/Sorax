@@ -1,0 +1,67 @@
+<html>
+<head>
+	<script>
+
+
+	// first type of closure, 3 names
+	var counter1 = function(){
+		var i = 0;
+		return function(){
+			return i ++ ;
+		}
+	}
+	var count = counter1();
+
+	console.log(count());
+	console.log(count());
+	console.log(count());
+
+	console.log("--------------");
+
+
+	// second type, anonymous function
+	var counter2 = function(){
+		var k = 0;
+		return function(value){
+			// k = value == undefined ? k : value; //changing variable value
+			return k ++ ;
+		}
+	}();
+
+	console.log(counter2());
+	console.log(counter2());
+	console.log(counter2(10));
+	console.log(counter2());
+	console.log(counter2());
+
+	console.log("--------------");
+
+	// incapsulation via object
+	var counter3 = function(value){
+		counter3.count = value == undefined ? counter3.count : value;
+		return counter3.count++;
+	}
+	counter3.count = 0;
+
+	console.log(counter3());
+	console.log(counter3());
+	console.log(counter3(10));
+	console.log(counter3());
+	console.log(counter3());
+
+	console.log("--------------");
+	var counter4 = function(){
+		return counter4.count ++;
+	}
+	counter4.count = 0;
+	console.log(counter4());
+	console.log(counter4());
+	console.log(counter4());
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

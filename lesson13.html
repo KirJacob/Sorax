@@ -1,0 +1,121 @@
+<html>
+<head>
+	<script>
+		function greet(name){
+			var result = "Hello " + name;
+			result = result.toUpperCase();
+			return result;
+		}
+		console.log(greet("Kirill"));
+		console.log(greet());
+
+		var bye = function (name){
+			console.log(arguments[1]);
+			return "Bye! " + name;
+		};
+		console.log(bye("Kirill", 23, 24, 25));
+
+// -----------------------------------------
+		var func = function(callback) {
+			var name = "Sorax";
+			callback(name);
+		}
+
+		func(function(n){
+			console.log("Hello " + n);
+		});
+// -----------------------------------------
+
+		var func2 = function(){
+			return function(){
+				console.log("Hi");
+			}
+		}
+// -----------------------------------------
+
+		func2()();
+
+		var greeting2 = (function(name){
+			return "Hello " + name;
+		}("Sorax"));
+
+		console.log(greeting2);
+// -----------------------------------------
+
+		console.log("-----------Your own examples-----------")
+		// function as an argument
+		var applyFunctionToArray = function(array, yourFunc){
+			var resultArray = [];
+			for (var i in array)
+				resultArray[i] = yourFunc(array[i]);
+			return resultArray;
+		}
+
+		var myFunc = function(number){
+			return number * number;
+		}
+
+
+		var someArray = [1, 2, 3, 4];
+		console.log(applyFunctionToArray(someArray, myFunc));
+		console.log(applyFunctionToArray(someArray, function(num){
+			return num * num * num}));
+
+		//-------------------------------------------------
+
+		var myFunc2 = function(callback){
+			var varArg = "Hello ";
+			callback(varArg);
+		}
+
+		myFunc2(function(something){
+			console.log(something + " Sorax");
+		});
+
+		var myFunc4 = function(something){
+			console.log(something + " Sorax");
+			return something + " Sorax";
+		}
+
+		// myFunc2(myFunc4());
+
+		// lesson13.html:87 Uncaught TypeError: callback is not a function
+  //   	at myFunc2 (lesson13.html:87)
+  //   	at lesson13.html:101
+
+		//-------------------------------------------------
+		//----function as a result---------------------------------------------
+
+
+		var functionWithResult = function(trigger){
+			var result;
+
+			if (trigger) result = function(y){
+					return Math.pow(y,2);
+				};
+
+			if (!trigger) result = function(x){
+					return Math.sqrt(x);
+				};
+
+			return result;
+					
+		};
+
+		console.log(functionWithResult(false)(2));
+		console.log(functionWithResult(true)(3));
+
+
+		//----anonymous self - invoking---------------------------------------------
+
+		var anonymous = (function(x){
+			return x * x * x;
+		}(3));
+		console.log(anonymous);
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

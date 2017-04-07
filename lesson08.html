@@ -1,0 +1,40 @@
+<html>
+<head>
+	<script>
+		var xundef = undefined;
+		var something;
+		var xNull = null;
+
+		//not initialized variable
+		console.log(something);
+		
+		//not existing object property
+		var obj = {name:"Kirill"};
+		console.log(obj.phone);
+		
+		//not existing member of array
+		var arr = [1,2,3];
+		console.log(arr[5]);
+
+		function greet(name){
+			return "Hello " + name; 
+		}
+		console.log(greet("Kirill"));
+		console.log(greet());
+
+		function saySomething(name){
+
+		}
+
+		console.log(saySomething("Kirill"));
+
+		console.log(null == undefined);
+		console.log(null === undefined);
+
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>

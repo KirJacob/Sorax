@@ -1,0 +1,38 @@
+<html>
+<head>
+	<script>
+	// CLOSURES
+
+	var func = function(){
+		var i = 0;
+		return function(value){
+			return value == undefined ? ++i : i = value;
+		}
+	}
+
+	var obj = func();
+
+	console.log("a="+obj());
+	console.log("b="+obj());
+	console.log("c="+obj(10));
+	console.log("c="+obj());
+	console.log("c="+obj());
+
+	var anotherFunc = function(){
+		var i = 20;
+		console.log(func()());
+	}
+
+	anotherFunc();
+
+	var myFunc = func();
+	var herFunc = myFunc;
+	console.log(herFunc());
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

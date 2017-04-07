@@ -1,0 +1,92 @@
+<!-- functions_reminder.html -->
+<html>
+<head>
+	<script>
+	// function with function as an argument
+	var letters = function(callback){
+		var str = "Kirill";
+		callback(str);
+	}
+
+	letters(function(x){
+		console.log(x.length);
+	})
+
+	letters(function(x){
+		console.log(x.toUpperCase());
+	})
+
+	// function with function as a result
+	var letters2 = function(){
+		return function(){
+			console.log("Hello Kirill");
+		}
+	}
+
+	letters2()();
+
+	// self-invoking function
+	var justMessage = function(name){
+		console.log("Hello to " +  name);
+	}("Kirill");
+
+	// sample of (2)
+	var squareCalc = function(numberOfPoints){
+		if (numberOfPoints == 3) return function(x){
+			return Math.floor(x * x * (Math.sqrt(3)/4));
+		}
+		if (numberOfPoints == 4) return function(x){
+			return x * x;
+		}
+	}
+
+	var arrTransform = function(array, transformFunc){
+		var result = [];
+		for (var i in array){
+			result[i] = transformFunc(array[i]);
+		}
+		return result;
+	}
+	
+	array = [10, 20, 30, 40, 50];
+	console.log(arrTransform(array, squareCalc(3)));
+	console.log(arrTransform(array, squareCalc(4)));
+
+
+console.log("I need to figure out in closures");
+
+	function closureFunc(){
+		var counter = 0;
+		return function(){
+			return counter ++ ;
+		}
+	}
+
+	var cF = closureFunc();
+
+	console.log(cF());
+	console.log(cF());
+	console.log(cF());
+
+	// functions
+	function square(x){
+		return x * x;
+	}
+	console.log("sq=" + square(3));
+
+
+	var square2 = function(x){
+		return x * x;
+	}
+	console.log("sq2=" + square(4));
+
+	var square4 = (function(x){
+		return x * x;
+	}(10));
+	console.log(square4);
+	</script>
+</head>
+<body>
+
+</body>
+</html>
